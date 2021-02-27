@@ -2,6 +2,7 @@ import {useState,useEffect,useCallback,useRef} from "react";
 import debounce from 'lodash.debounce';
 import axios from 'axios';
 import InfiniteScroll from "react-infinite-scroller";
+import Modal from "react-modal";
 
 
 function App() {
@@ -12,7 +13,7 @@ const [name,setName] =useState("rick")
 const [page,setPage] =useState(1)
 const [myhasmore,setHasMore] =useState(true)
 const [url,setUrl] = useState("https://rickandmortyapi.com/api/character/?name="+name+"&page="+page)
-
+const [isOpen,setOpen] =useState(false)
 
 useEffect(()=>{
   setPage(1)
@@ -50,6 +51,11 @@ function OnFetchMore(){
   }
 }
 
+//Modal is Open
+function isModal(){
+  setOpen(!isOpen)
+}
+
   return (
     <div className="App">
       <input
@@ -59,7 +65,15 @@ function OnFetchMore(){
           e.preventDefault();
           onChange(e.target.value)}}
       />
-    
+    <Modal 
+    isOpen={isOpen} 
+    // onAfterOpen={}
+    // style={}
+    // onRequestClose={}
+    >
+    <button onClick={isModal}>Close</button>
+    </Modal>
+    <button onClick={isModal}>Modal</button>
     <div>
         <InfiniteScroll
             pageStart={0}
