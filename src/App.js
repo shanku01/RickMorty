@@ -1,8 +1,9 @@
 import {useState,useEffect,useCallback,useRef} from "react";
-import debounce from 'lodash.debounce';
 import axios from 'axios';
 import InfiniteScroll from "react-infinite-scroller";
 import Modal from "react-modal";
+import MyList from "./component/MyList";
+import ModalComponent from "./component/ModalComponent";
 
 
 function App() {
@@ -14,6 +15,7 @@ const [page,setPage] =useState(1)
 const [myhasmore,setHasMore] =useState(true)
 const [url,setUrl] = useState("https://rickandmortyapi.com/api/character/?name="+name+"&page="+page)
 const [isOpen,setOpen] =useState(false)
+const [modalData,setModalData]=useState({})
 
 useEffect(()=>{
   setPage(1)
@@ -51,9 +53,9 @@ function OnFetchMore(){
   }
 }
 
-//Modal is Open
-function isModal(){
+function listHandel(item){
   setOpen(!isOpen)
+  setModalData(item)
 }
 
   return (
@@ -67,13 +69,14 @@ function isModal(){
       />
     <Modal 
     isOpen={isOpen} 
-    // onAfterOpen={}
-    // style={}
-    // onRequestClose={}
     >
-    <button onClick={isModal}>Close</button>
+      
+            
+            <ModalComponent key={modalData.id} data={modalData} clickHandler={event=>{
+              event.preventDefault();
+              listHandel(modalData)
+            }}/>
     </Modal>
-    <button onClick={isModal}>Modal</button>
     <div>
         <InfiniteScroll
             pageStart={0}
@@ -84,10 +87,10 @@ function isModal(){
         >
                       {/*Priting object*/}
       {contacts.map((item,key)=>{
-        return <div key ={key}>
-        <p>{item.name}</p>
-        </div>
-      })}
+        return (<MyList key={item.img} data={item} clickHandler={event=>{
+          event.preventDefault()
+          listHandel(item)}}/>)}
+      )}
         </InfiniteScroll>
 
 </div>
