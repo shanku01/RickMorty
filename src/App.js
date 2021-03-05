@@ -59,16 +59,39 @@ function listHandel(item){
 }
 
   return (
-    <div className="App">
-      <input
+    <>
+    <input
         className="filter-input"
-        placeholder="Rick, Morty,Jesus.."
+        placeholder="Rick, Morty,Jesus.....Search!!"
         onChange={e => {
           e.preventDefault();
           onChange(e.target.value)}}
       />
     <Modal 
     isOpen={isOpen} 
+    style={{
+    overlay: {
+      position: 'fixed',
+      top: "15%",
+      left: "25%",
+      width:"70%",
+      height:"70%",
+      backgroundColor: 'white',
+      opacity:0.7,
+      borderRadius:"20px",
+    },
+    content: {
+      position: 'absolute',
+      display:"block",
+      border:"none",
+      background: '#fff',
+      overflow: 'auto',
+      outline: 'none',
+      padding: '10px',
+      backgroundColor: 'white',
+      opacity:0.8,
+    }
+  }}
     >
       
             
@@ -91,8 +114,7 @@ function listHandel(item){
           listHandel(item)}}/>)}
       )}
         </InfiniteScroll>
-      
-    </div>
+    </>
   );
 }
 

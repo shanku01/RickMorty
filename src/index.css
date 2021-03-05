@@ -5,8 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-repeat:repeat;
-  background-image: url("./backgound.jpg");
+  background-image: linear-gradient(to right top, #ffffff, #f6f6f8, #edeef0, #e4e5e9, #dadde2);;
 }
 
 code {
@@ -24,32 +23,37 @@ code {
   margin: 20px;
   border-radius: 20px;
   border: none;
-  border-bottom: 1px bold black;
   position: fixed;
   left: 80vh;
+  box-shadow: 2px 1px 2px 2px #ebe6e6;
+  padding: 10px;
+  font-size: 20px;
 }
 
 .my-list{
-  width: 70vh;
   height: 50px;
   margin: 20px;
+  width: fit-content;
   border-radius: 20px;
   border: none;
   border-bottom: 1px bold black;
   text-align: center;
   box-shadow: 2px 1px 2px 2px #ebe6e6;
-  color: white;
+  color:gray;
   transition: 2s;
+  padding: 10px;
+  background-color: #DADDE2;
 }
 .my-list:hover{
-  background: #ebe6e6;
+  background: white;
   color: black;
 }
 
 .character-name{
   font-size: 30px;
   margin: 10px;
-  text-align: center
+  text-align: center;
+  padding:2px;
 }
 
 .icon{
@@ -64,3 +68,57 @@ code {
   text-align: center
 }
 
+input:focus{
+  outline: none;
+}
+
+.modal img{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  left:37%;
+  position: relative;
+  padding: 10px;
+}
+
+.modal{
+  display: grid;
+  color:black;
+}
+
+.modal-character-name{
+  padding: 10px;
+  font-size: 40px;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+}
+
+.modal button{
+  float: right;
+  width: fit-content;
+  border:none;
+  background-color: brown;
+  color: white;
+  font-size: 20px;
+  border-radius: 3px;
+}
+
+.character-info{
+  display: inline-flex;
+  margin-top: 10px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.inlineblock{
+  width: 50%;
+  display: grid;
+  padding: 10px;
+  text-align: center;
+}
+
+.info{
+  font-weight: bold;
+  padding: 2px;
+  text-align: center;
+}
