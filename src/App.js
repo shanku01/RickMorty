@@ -77,7 +77,6 @@ function listHandel(item){
               listHandel(modalData)
             }}/>
     </Modal>
-    <div>
         <InfiniteScroll
             pageStart={0}
             loadMore={OnFetchMore}
@@ -92,8 +91,6 @@ function listHandel(item){
           listHandel(item)}}/>)}
       )}
         </InfiniteScroll>
-
-</div>
       
     </div>
   );
